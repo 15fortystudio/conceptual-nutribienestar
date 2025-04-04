@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+
+const {
+	contentTitle,
+	contentText01,
+	contentText02,
+	contentText03,
+	contentImgSrc,
+	contentImgAlt,
+	contentReverse = true,
+} = Astro.props;
+---
+
+<section
+	class={`flex flex-col items-center gap-4 lg:gap-16 md:flex-row ${contentReverse && 'md:flex-row-reverse'}`}
+>
+	<!-- Imagen arriba en móvil, ajustable en escritorio -->
+	<figure
+		role="img"
+		class="h-[300px] w-full shadow-lg md:h-[400px] md:w-1/2 xl:h-[600px]"
+	>
+		<Image
+			src={contentImgSrc}
+			alt={contentImgAlt}
+			width={800}
+			height={600}
+			class="h-full w-full rounded object-cover"
+			format="webp"
+			loading="lazy"
+			decoding="async"
+			sizes={`(max-width: 480px) 480px, (max-width: 1024px) 1024px`}
+		/>
+		{contentImgAlt && <figcaption class="sr-only">{contentImgAlt}</figcaption>}
+	</figure>
+
+	<!-- Texto abajo en móvil, ajustable en escritorio -->
+	<div
+		class="mt-4 flex w-full flex-col gap-4 text-center md:w-1/2 lg:gap-8 lg:p-8"
+	>
+		<h2 class="title text-brandPrimary textShadow">{contentTitle}</h2>
+		<p class="main">{contentText01}</p>
+		{contentText02 && <p class="main">{contentText02}</p>}
+		{contentText03 && <p class="main">{contentText03}</p>}
+	</div>
+</section>

@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+
+const { serviceSrc, serviceAlt, serviceTitle, serviceText } = Astro.props;
+---
+
+<article class="flex flex-col gap-[2rem]">
+	<div class="align-center relative mx-auto h-0 w-full pb-[100%] xl:w-[400px]">
+		<Image
+			src={serviceSrc}
+			alt={serviceAlt}
+			class="absolute inset-0 m-auto h-full w-full rounded object-cover shadow-lg xl:h-[400px]"
+			width={800}
+			height={600}
+			priority
+			format="webp"
+			loading="lazy"
+			decoding="async"
+		/>
+	</div>
+	<div class="flex flex-col gap-[1rem]">
+		<h2 class="title text-brandPrimary textShadow capitalize lg:mx-[4rem]">
+			{serviceTitle}
+		</h2>
+		<p class="main">{serviceText}</p>
+	</div>
+</article>

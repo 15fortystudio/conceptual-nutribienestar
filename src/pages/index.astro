@@ -1,0 +1,185 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Event from '../components/Event.astro';
+import CallToAction from '../components/CallToAction.astro';
+import ContentImageBlock from '../components/ContentImageBlock.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import BlogCarousel from '../components/BlogCarousel.astro';
+import TestimoniesCarousel from '../components/TestimoniesCarousel.astro';
+
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgIndex from '../assets/images/bg/bg-index.webp';
+import indexMain from '../assets/images/index-main.webp';
+import indexMain02 from '../assets/images/index-main02.webp';
+import serviciosConsulta from '../assets/images/services/servicios-consulta.webp';
+import serviciosPlanes from '../assets/images/services/servicios-planes.webp';
+import serviciosTalleres from '../assets/images/services/servicios-talleres.webp';
+import CustomBrandButton from '../components/CustomBrandButton.astro';
+
+/* BLOG */
+const posts = await getCollection('posts');
+const limitedPosts = posts.slice(0, 3);
+// console.log('Limited Posts:', limitedPosts)
+
+/* TESTIMONIES */
+const testimonials = await getCollection('testimonies');
+// const limitedTestimonials = testimonials.slice(0, 3);
+
+const realTestimonials = testimonials.map((t) => t.data);
+const limitedTestimonials = realTestimonials.slice(0, 3);
+---
+
+<BaseLayout title="Index">
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<section
+		id="banner-section"
+		role="banner"
+		aria-labelledby="banner-heading"
+		class="relative h-[250px] text-center md:h-[500px] xl:h-[700px]"
+	>
+		<h2 id="banner-heading" class="sr-only">Bienvenido a NutriBienestar</h2>
+		<div
+			class="relative flex h-full w-full items-center justify-center px-[1.25rem] py-[3rem] md:px-[1rem] md:py-[2rem] xl:px-[4rem]"
+		>
+			<h1 class="banner-title animate-fade-in">
+				Tu <span class="styled">camino</span> hacia un estilo
+				<span class="styled">de vida saludable</span> comienza
+				<span class="styled">aquí</span>
+			</h1>
+		</div>
+		<div class="absolute inset-0 -z-10">
+			<Image
+				src={bgIndex}
+				alt="Un tazón con ensalada de hojas verdes, huevo cocido y pomelo fresco, representando alimentación saludable"
+				loading="lazy"
+				quality="80"
+				width={1600}
+				height={900}
+				class="h-full w-full rounded object-cover opacity-80 blur-xs"
+				decoding="async"
+				sizes={`(max-width: 480px) 480px, (max-width: 1024px) 1024px, 1600px`}
+			/>
+		</div>
+	</section>
+	<!-- ========================= -->
+	<!--           About           -->
+	<!-- ========================= -->
+	<section
+		aria-labelledby="about-heading"
+		class="flex flex-col gap-8 text-center"
+	>
+		<h1 id="about-heading" class="sr-only">
+			Seccion sobre la Dra. Ana Martínez
+		</h1>
+		<ContentImageBlock
+			contentTitle="¡Hola! Soy la Dra. Ana Martínez"
+			contentText01="Soy nutrióloga independiente y estoy aquí para ayudarte a alcanzar un bienestar integral."
+			contentText02="Con mi experiencia en nutrición general, deportiva y terapéutica, ofrezco apoyo personalizado adaptado a tus necesidades y estilo de vida. Cada persona es única, por eso mi enfoque se basa en entender tus objetivos para crear un plan efectivo."
+			contentImgSrc={indexMain}
+			contentImgAlt="Mesa con una selección de platos y bebidas dispuestos de forma ordenada y apetitosa."
+			contentReverse={false}
+		/>
+		<ContentImageBlock
+			contentTitle="Mi enfoque en la nutrición"
+			contentText01="Creo en la nutrición como una herramienta para mejorar la salud. Mi compromiso es guiarte de forma sencilla hacia tus metas, ya sea perder peso, mejorar tu digestión o aumentar tu rendimiento deportivo."
+			contentText02="¡Construyamos juntos hábitos saludables y disfrutemos de la comida en el camino!"
+			contentImgSrc={indexMain02}
+			contentImgAlt="Un médico sostiene una manzana en una mano y pastillas en la otra, rodeado de frutas, verduras y herramientas médicas sobre un escritorio."
+			contentReverse={true}
+		/>
+		<div>
+			<CustomBrandButton btnText="Conoce mas sobre mi" btnLink="/sobre-mi" />
+		</div>
+	</section>
+	<!-- ========================= -->
+	<!--           Event           -->
+	<!-- ========================= -->
+	<section id="event-section">
+		<h2 id="event-heading" class="sr-only">Descarga nuestra guia</h2>
+		<Event
+			eventTitle="Empieza tu camino hacia una nutrición saludable"
+			eventText="Descarga nuestra guía gratuita con consejos prácticos para mejorar tus hábitos alimenticios y sentirte mejor cada día."
+		/>
+	</section>
+	<!-- ============================ -->
+	<!--           Services           -->
+	<!-- ============================ -->
+	<section
+		id="services-section"
+		class="flex flex-col gap-[1rem] text-center xl:gap-[2rem]"
+	>
+		<h1 id="services-heading" class="sr-only">Servicios</h1>
+		<h2 class="sub-title">Nuestros servicios incluyen:</h2>
+		<div class="flex flex-col xl:gap-[4rem]">
+			<div
+				class="grid grid-cols-2 gap-8 py-[1rem] md:grid-cols-3 xl:grid-cols-3 xl:gap-[4rem]"
+			>
+				<ServiceCard
+					serviceSrc={serviciosConsulta}
+					serviceAlt="Doctora conversando con una paciente en un consultorio médico."
+					serviceTitle="Consultas personalizadas"
+					serviceText="Cada persona es única, por eso ofrezco consultas personalizadas que se adaptan a tus necesidades y objetivos específicos, ayudándote a alcanzar un bienestar integral."
+				/>
+				<ServiceCard
+					serviceSrc={serviciosPlanes}
+					serviceAlt="Comida saludable en un plato equilibrado."
+					serviceTitle="Planes de alimentación"
+					serviceText="Desarrollo planes de alimentación equilibrados, diseñados especialmente para ti, teniendo en cuenta tus gustos, estilo de vida y metas de salud."
+				/>
+				<ServiceCard
+					serviceSrc={serviciosTalleres}
+					serviceAlt="Grupo de personas participando en un taller de nutrición."
+					serviceTitle="Talleres de nutrición"
+					serviceText="Mis talleres de nutrición te brindan herramientas prácticas y conocimientos clave para adoptar hábitos alimenticios saludables y sostenibles en tu vida diaria."
+				/>
+			</div>
+		</div>
+		<CustomBrandButton btnText="Conoce Más!" btnLink="/servicios" />
+	</section>
+	<!-- =============================== -->
+	<!--           Testimonies           -->
+	<!-- =============================== -->
+	<section id="testimonials-section" class="flex flex-col text-center">
+		<h2 id="testimonials-heading" class="leading">Testimonios</h2>
+		<div>
+			<TestimoniesCarousel testimonies={limitedTestimonials} />
+		</div>
+		<div>
+			<CustomBrandButton
+				btnText="Mira lo que dicen de mí"
+				btnLink="/testimonios"
+			/>
+		</div>
+	</section>
+	<!-- ======================== -->
+	<!--           Blog           -->
+	<!-- ======================== -->
+	<section
+		id="blog-section"
+		class="blog bg-accent flex flex-col gap-[2rem] text-center"
+	>
+		<h2 id="blog-heading" class="sr-only">Blog Tips</h2>
+		<h3 class="leading mt-[2rem]">Últimos Posts</h3>
+		<BlogCarousel posts={limitedPosts} />
+		<a
+			href="/blog"
+			class="bg-brandPrimary focus:ring-brandPrimary mx-auto mb-[2rem] flex cursor-pointer gap-[0.5rem] rounded px-[1rem] py-[0.5rem] text-white shadow-lg transition-transform duration-200 hover:bg-neutral-600 focus:ring focus:outline-none active:scale-95"
+			aria-label="Leer más artículos sobre nutrición y bienestar"
+		>
+			¡Inspírate con mis consejos!
+		</a>
+	</section>
+	<!-- ================================== -->
+	<!--           Call To Action           -->
+	<!-- ================================== -->
+	<section id="cta-section">
+		<h2 id="cta-heading" class="sr-only">Llamado a la acción para contactar</h2>
+		<CallToAction />
+	</section>
+</BaseLayout>

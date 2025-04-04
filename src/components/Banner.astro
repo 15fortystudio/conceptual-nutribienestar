@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+
+const {
+	bannerSrc,
+	bannerAlt = 'Imagen del banner',
+	bannerTitle,
+	bannerPage = 'Página del banner',
+} = Astro.props;
+---
+
+<div
+	id="banner-section"
+	aria-labelledby="banner-heading"
+	class="relative h-[200px] overflow-hidden text-center md:h-[400px]"
+>
+	<h2 id="banner-heading" class="sr-only">{bannerPage}</h2>
+	<div
+		class="relative flex h-full w-full items-center justify-center px-4 py-8"
+	>
+		<h1 class="banner-title animate-fade-in">{bannerTitle}</h1>
+	</div>
+	<div class="absolute inset-0 -z-10">
+		<Image
+			src={bannerSrc}
+			alt={bannerAlt}
+			loading="lazy"
+			quality={80}
+			width={1200}
+			height={800}
+			class="h-full w-full object-cover opacity-80 blur-xs"
+			decoding="async"
+			sizes="(max-width: 768px) 768px, (max-width: 1200px) 1200px"
+		/>
+	</div>
+</div>

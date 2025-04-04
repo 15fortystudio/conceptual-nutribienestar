@@ -1,0 +1,93 @@
+---
+import TestimonyCard from '../components/TestimonyCard.astro';
+import { getCollection } from 'astro:content';
+
+const testimonials = await getCollection('testimonies');
+
+// Ordena los testimonios por fecha (más reciente primero) y limita a 3
+const sortedTestimonies = testimonials
+	.sort(
+		(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+	)
+	.slice(0, 3);
+---
+
+<div
+	class="relative flex h-[500px] max-w-full flex-col overflow-hidden md:h-[650px] xl:h-[600px]"
+>
+	<button
+		class="absolute bottom-[50%] left-[10px] z-20 cursor-pointer border-0 text-[60px] text-neutral-600 opacity-50 hover:opacity-100 focus:opacity-100"
+		id="prevButtonTestimoniesCarousel"
+		aria-label="Testimonio anterior"
+	>
+		‹
+	</button>
+
+	<div
+		class="ml-[calc(50%-170px)] flex h-full items-center gap-[4rem] transition-transform duration-500 ease-in-out md:ml-[calc(50%-200px)] xl:ml-[calc(50%-250px)]"
+		id="testimoniesCarouselWrapper"
+		aria-live="polite"
+	>
+		{
+			sortedTestimonies.map((testimony, index) => (
+				<TestimonyCard testimony={testimony} index={index} />
+			))
+		}
+	</div>
+
+	<button
+		class="absolute right-[10px] bottom-[50%] z-20 cursor-pointer border-0 text-[60px] text-neutral-600 opacity-50 hover:opacity-100 focus:opacity-100"
+		id="nextButtonTestimoniesCarousel"
+		aria-label="Siguiente testimonio"
+	>
+		›
+	</button>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const wrapper = document.getElementById('testimoniesCarouselWrapper');
+		if (!(wrapper instanceof HTMLElement)) return;
+
+		const items = Array.from(wrapper.children).filter(
+			(item) => item instanceof HTMLElement
+		);
+		if (items.length === 0) return;
+
+		let currentIndex = 0;
+		const totalItems = items.length;
+		const gap = 65;
+
+		const updateCarousel = () => {
+			if (!(items[0] instanceof HTMLElement)) return;
+			const itemWidth = items[0].offsetWidth;
+			const offset = currentIndex * (itemWidth + gap);
+			wrapper.style.transform = `translateX(-${offset}px)`;
+
+			items.forEach((item, index) => {
+				if (item instanceof HTMLElement) {
+					item.classList.toggle('focused', index === currentIndex);
+				}
+			});
+		};
+
+		const nextButton = document.getElementById('nextButtonTestimoniesCarousel');
+		const prevButton = document.getElementById('prevButtonTestimoniesCarousel');
+
+		if (nextButton instanceof HTMLButtonElement) {
+			nextButton.addEventListener('click', () => {
+				currentIndex = (currentIndex + 1) % totalItems;
+				updateCarousel();
+			});
+		}
+
+		if (prevButton instanceof HTMLButtonElement) {
+			prevButton.addEventListener('click', () => {
+				currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+				updateCarousel();
+			});
+		}
+
+		updateCarousel();
+	});
+</script>

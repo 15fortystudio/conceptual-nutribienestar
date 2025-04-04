@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="ERROR 404">
+	<!-- ==================== -->
+	<!--        BANNER        -->
+	<!-- ==================== -->
+	<section
+		id="banner-section"
+		role="banner"
+		aria-labelledby="banner-heading"
+		class="error-container bg-accent relative -z-10 flex min-h-[60vh] w-full flex-col items-center justify-center text-center"
+	>
+		<h1 id="banner-heading" class="sr-only">
+			Error 404 - Página no encontrada
+		</h1>
+		<div
+			class="banner__text-container flex w-full flex-col items-center justify-center"
+		>
+			<h2 class="error-title" data-text="404" aria-hidden="true">404</h2>
+			<p
+				class="error-message"
+				data-text="Error: La página que buscas no se encuentra"
+			>
+				Error: La página que buscas no se encuentra
+			</p>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.error-title,
+	.error-message {
+		position: relative;
+		display: block;
+		width: 100%;
+		background: url('../assets/images/bg/bg-error404.webp') no-repeat center;
+		background: contain;
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+	}
+
+	.error-title::before,
+	.error-message::before {
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		-webkit-text-fill-color: #000000;
+		-webkit-background-clip: unset;
+		background-clip: unset;
+		filter: blur(8px);
+		z-index: -1;
+	}
+
+	.error-title {
+		font-size: clamp(6rem, 45vw, 40rem);
+		font-weight: 900;
+		text-align: center;
+		line-height: 1;
+		-webkit-text-stroke: 4px rgba(0, 0, 0, 1);
+	}
+
+	.error-message {
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		font-weight: 700;
+		max-width: 80%;
+		text-align: center;
+		margin: 0;
+		-webkit-text-stroke: 1.2px rgba(0, 0, 0, 1);
+	}
+</style>

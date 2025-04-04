@@ -1,0 +1,59 @@
+---
+import { SITE_TITLE } from '../config/consts';
+import type { Props } from '../utils/metaData';
+
+const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
+const fullTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
+const fullUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const fullImage = new URL(image, Astro.site).toString();
+---
+
+<!-- Configuración básica -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="robots" content="index, follow" />
+<meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={fullUrl} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Sitemap y RSS -->
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+	rel="alternate"
+	type="application/rss+xml"
+	title={SITE_TITLE}
+	href={new URL('rss.xml', Astro.site)}
+/>
+
+<!-- Meta tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta
+	name="description"
+	content={description ?? 'Descubre contenido interesante en nuestro blog.'}
+/>
+
+<!-- Open Graph (Facebook, Instagram, LinkedIn) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={fullUrl} />
+<meta property="og:title" content={fullTitle} />
+<meta
+	property="og:description"
+	content={description ?? 'Explora artículos y proyectos destacados.'}
+/>
+<meta property="og:image" content={fullImage} />
+<meta property="og:site_name" content={SITE_TITLE} />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta
+	name="twitter:description"
+	content={description ?? 'Descubre contenido interesante en nuestro blog.'}
+/>
+<meta name="twitter:image" content={fullImage} />

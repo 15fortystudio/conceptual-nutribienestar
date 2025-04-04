@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+import ContentImageBlock from '../components/ContentImageBlock.astro';
+import Banner from '../components/Banner.astro';
+
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgSobremi from '../assets/images/bg/bg-sobremi.webp';
+import Sobremi01 from '../assets/images/sobremi-01.webp';
+import Sobremi02 from '../assets/images/sobremi-02.webp';
+---
+
+<BaseLayout title="Sobre Mí">
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<Banner
+		bannerSrc={bgSobremi}
+		bannerAlt="Mesa elegante con platos de comida saludable, representando el enfoque nutricional balanceado."
+		bannerPage="Sobre Mí"
+		bannerTitle="Sobre Mí"
+	/>
+	<!-- =========================== -->
+	<!--           Content           -->
+	<!-- =========================== -->
+	<section
+		aria-labelledby="content-heading"
+		class="flex flex-col gap-8 md:gap-16"
+	>
+		<h2 id="content-heading" class="sr-only">
+			Información sobre mi enfoque y experiencia
+		</h2>
+
+		<h2 class="heading textShadow text-brandPrimary text-center">
+			Comprometidos con tu sonrisa
+		</h2>
+
+		<div class="flex flex-col gap-4 md:gap-16">
+			<ContentImageBlock
+				contentTitle="Conóceme y Descubre Cómo Puedo Ayudarte a Sentirte Mejor"
+				contentText01="Soy nutrióloga especializada en pérdida de peso, salud digestiva y nutrición deportiva."
+				contentText02="Mi enfoque es completamente personalizado, ya que cada persona es única y merece un plan adaptado a sus necesidades."
+				contentImgSrc={Sobremi01}
+				contentImgAlt="Nutrióloga escribiendo en una libreta junto a una mesa con alimentos saludables."
+				contentReverse={false}
+			/>
+
+			<ContentImageBlock
+				contentTitle="Educación Nutricional y Acompañamiento Personalizado"
+				contentText01="Me apasiona educar a mis pacientes para que tomen control de su salud, ya sea para perder peso o mejorar su rendimiento deportivo."
+				contentText02=" Mi objetivo es guiarte hacia tus metas con un plan nutricional adecuado y sostenible. Ofrezco talleres interactivos donde aprenderás de forma práctica cómo adoptar una alimentación saludable y divertida."
+				contentText03="Estoy aquí para acompañarte en cada paso hacia una vida más saludable. ¡Vamos juntos en este camino!"
+				contentImgSrc={Sobremi02}
+				contentImgAlt="Nutrióloga explicando un plan alimenticio a un paciente en consulta."
+				contentReverse={true}
+			/>
+		</div>
+	</section>
+
+	<!-- ================================== -->
+	<!--           Call To Action           -->
+	<!-- ================================== -->
+	<section aria-labelledby="cta-heading">
+		<h2 id="cta-heading" class="sr-only">Llamado a la acción para contactar</h2>
+		<CallToAction />
+	</section>
+</BaseLayout>

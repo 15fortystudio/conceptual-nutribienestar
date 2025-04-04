@@ -1,0 +1,167 @@
+@import 'tailwindcss';
+@layer theme, base, components, utilities;
+
+/* ========================= */
+/*          Fonts            */
+/* ========================= */
+@import '@fontsource-variable/montserrat';
+@import '@fontsource-variable/raleway';
+@import '@fontsource-variable/open-sans';
+
+/* ========================= */
+/*           Theme           */
+/* ========================= */
+@theme {
+	/* Fuentes */
+	--font-banner: 'Montserrat Variable';
+	--font-accent: 'Raleway Variable';
+	--font-header: 'Montserrat Variable';
+	--font-main: 'Open Sans Variable';
+
+	/* Colores de marca */
+	--color-brandPrimary: #b2c8e0;
+	--color-brandSecondary: #a8e6cf;
+	--color-accent: #a8e6cf25;
+
+	/* Navbar y footer */
+	--color-bars: oklch(0.922 0 0);
+
+	/* Botones */
+	--color-btnPrimary: var(--color-brandPrimary);
+	--color-btnSecondary: var(--color-brandSecondary);
+	--color-btnTertiary: #666666;
+}
+
+/* ============================== */
+/*           Animations           */
+/* ============================== */
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@layer utilities {
+	.animate-fade-in {
+		opacity: 0;
+		animation: fade-in 3s ease-in-out 0s 1 forwards;
+	}
+}
+
+/* ========================= */
+/*          General          */
+/* ========================= */
+body {
+	font-family: var(--font-main);
+}
+
+/* ========================= */
+/*           Fonts           */
+/* ========================= */
+.banner-title {
+	font-family: var(--font-banner);
+	font-size: clamp(2.25rem, 8vw, 6rem);
+	color: var(--color-neutral-800);
+	line-height: 1;
+	text-transform: capitalize;
+	font-weight: 500;
+}
+
+.styled {
+	font-family: var(--font-accent);
+	color: var(--color-brandSecondary);
+	font-weight: 800;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.heading {
+	font-family: var(--font-header);
+	font-size: clamp(1.5rem, 2vw, 2.5rem);
+	line-height: 1.2;
+	font-weight: 600;
+}
+
+.sub-heading {
+	font-family: var(--font-header);
+	font-size: clamp(1rem, 2vw, 1.5rem);
+	color: var(--color-neutral-700);
+	text-transform: capitalize;
+}
+
+.title {
+	font-family: var(--font-header);
+	font-size: clamp(1.5rem, 2vw, 2.25rem);
+	font-weight: 600;
+}
+
+.sub-title {
+	font-family: var(--font-header);
+	font-size: clamp(1.25rem, 2vw, 1.5rem);
+	color: var(--color-neutral-600);
+	font-weight: 500;
+}
+
+.leading {
+	font-family: var(--font-header);
+	font-size: clamp(0.75rem, 2vw, 1rem);
+	color: var(--color-neutral-400);
+	text-transform: uppercase;
+}
+
+.legal-text {
+	font-family: var(--font-header);
+	font-size: min(0.75rem, 2vw);
+	color: var(--color-neutral-400);
+}
+
+.main {
+	font-family: var(--font-main);
+	color: var(--color-neutral-500);
+	font-size: clamp(1rem, 2vw, 1.25rem);
+	line-height: 1.4;
+}
+
+.textShadow {
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================= */
+/*           Hover           */
+/* ========================= */
+.nav-link {
+	font-family: var(--font-main);
+	color: var(--color-neutral-500);
+	font-size: clamp(1rem);
+	line-height: 1.2;
+	border-radius: 0.25rem;
+	color: var(--color-neutral-500);
+	padding: 0.5rem;
+	transition:
+		background-color 0.2s ease-in-out,
+		color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+	background-color: var(--color-neutral-500);
+	color: white;
+}
+
+/* ========================= */
+/*          Box Shadow       */
+/* ========================= */
+.box {
+	box-shadow: 20px -20px 0px rgba(239, 246, 255, 1);
+	border-radius: 8px;
+}
+
+@media (max-width: 640px) {
+	.box {
+		box-shadow: 10px -10px 0px rgba(239, 246, 255, 1);
+		border-radius: 8px;
+	}
+}

@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import CTA from '../assets/images/cta.webp';
+import CustomBrandButton from './CustomBrandButton.astro';
+---
+
+<section class="flex flex-col items-center gap-6 md:flex-row-reverse lg:gap-16">
+	<!-- Imagen arriba en móvil, ajustable en escritorio -->
+	<div class="h-[250px] w-full shadow-lg md:h-full md:w-1/2">
+		<Image
+			src={CTA}
+			alt=""
+			class="h-full w-full rounded object-cover"
+			decoding="async"
+			loading="lazy"
+		/>
+	</div>
+
+	<!-- Texto abajo en móvil, ajustable en escritorio -->
+	<div class="flex w-full flex-col gap-8 text-center md:w-1/2">
+		<h2 class="heading">
+			¿Te gustaría mejorar tu <span class="styled">salud</span> con orientación
+			<span class="styled">personalizada</span>? Estoy aquí para ayudarte a
+			crear un plan que funcione
+			<span class="styled">para ti</span>.
+		</h2>
+		<CustomBrandButton
+			btnText="¡Agenda tu consulta ahora!"
+			btnLink="/contacto"
+		/>
+	</div>
+</section>

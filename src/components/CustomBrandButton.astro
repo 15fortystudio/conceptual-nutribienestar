@@ -1,0 +1,12 @@
+---
+const { btnLink, btnText } = Astro.props;
+---
+
+<div>
+	<a
+		href={btnLink}
+		class="bg-brandPrimary hover:bg-brandSecondary focus:ring-brandSecondary inline-block cursor-pointer rounded px-4 py-2 text-lg text-white shadow-lg transition-transform duration-200 focus:ring focus:outline-none active:scale-95"
+	>
+		{btnText}
+	</a>
+</div>

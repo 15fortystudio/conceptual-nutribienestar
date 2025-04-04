@@ -1,0 +1,53 @@
+---
+import BlogCard from '../components/BlogCard.astro';
+import CallToAction from '../components/CallToAction.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Banner from '../components/Banner.astro';
+import { getCollection } from 'astro:content';
+
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgBlog from '../assets/images/bg/bg-blog.webp';
+
+const posts = await getCollection('posts');
+
+const sortedPosts = posts.sort(
+	(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<BaseLayout title="Blog">
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<Banner
+		bannerSrc={bgBlog}
+		bannerAlt="Una mujer disfrutando de una ensalada mientras trabaja en su laptop."
+		bannerPage="Blog"
+		bannerTitle="Blog"
+	/>
+
+	<!-- =========================== -->
+	<!--           Content           -->
+	<!-- =========================== -->
+	<section
+		aria-labelledby="content-heading"
+		class="flex flex-col gap-8 xl:gap-16"
+	>
+		<h2 id="content-heading" class="sr-only">
+			Blog con consejos prácticos para una sonrisa saludable.
+		</h2>
+		<h2 class="heading textShadow text-brandPrimary text-center">
+			Secretos para una Boca Saludable
+		</h2>
+		{posts.map((post) => <BlogCard post={post} />)}
+	</section>
+	<!-- ================================== -->
+	<!--           Call To Action           -->
+	<!-- ================================== -->
+	<section id="cta-section">
+		<h2 id="cta-heading" class="sr-only">Llamado a la acción para contactar</h2>
+		<CallToAction />
+	</section>
+</BaseLayout>

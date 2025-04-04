@@ -1,0 +1,55 @@
+---
+// components/BlogCard.astro
+import CustomBrandButton from './CustomBrandButton.astro';
+
+const { post } = Astro.props;
+
+if (!post || !post.data || !post.slug) {
+	throw new Error('No se recibió un post válido en BlogCardIndex.');
+}
+
+const { image, title, date, summary } = post.data;
+const postUrl = `/blog/${post.slug}/`;
+---
+
+<div
+	class="border-accent flex h-full w-full flex-col items-center rounded border-[0.375rem] text-center shadow-lg md:flex-row"
+>
+	<!-- Imagen del post -->
+	<div class="relative h-[300px] w-full md:h-[400px]">
+		{
+			image ? (
+				<picture>
+					<source srcset={image} type="image/webp" />
+					<img
+						src={image}
+						alt={title}
+						class="border-accent h-full w-full border-b-[0.375rem] object-cover md:border-r-[0.375rem] md:border-b-0"
+						loading="lazy"
+						decoding="async"
+					/>
+				</picture>
+			) : (
+				<div class="flex h-full w-full items-center justify-center bg-gray-200 text-gray-500">
+					Sin imagen
+				</div>
+			)
+		}
+	</div>
+
+	<!-- Contenido -->
+	<div class="flex h-full w-full flex-col gap-3 p-4">
+		<h2 class="title text-neutral-900">
+			{title || 'Sin título'}
+		</h2>
+		{
+			date && (
+				<time datetime={date} class="leading">
+					{date}
+				</time>
+			)
+		}
+		{summary && <p class="main">{summary}</p>}
+		<CustomBrandButton btnText="Leer más" btnLink={postUrl} />
+	</div>
+</div>

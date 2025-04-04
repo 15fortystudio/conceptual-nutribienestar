@@ -1,0 +1,94 @@
+---
+const navLinks = [
+	{ href: '/sobre-mi', text: 'Sobre Mí' },
+	{ href: '/servicios', text: 'Servicios' },
+	{ href: '/testimonios', text: 'Testimonios' },
+	{ href: '/blog', text: 'Blog' },
+	{ href: '/contacto', text: 'Contacto' },
+];
+---
+
+<footer
+	class="bg-bars mt-8 flex flex-col items-center gap-4 rounded p-4 text-center"
+>
+	<div class="w-full justify-between md:flex md:items-center">
+		{/* Logo/Nombre */}
+		<a
+			class="text-3xl font-bold text-neutral-800"
+			href="/"
+			aria-label="Ir a la página de inicio"
+		>
+			NutriBienestar
+		</a>
+
+		{/* Menú de navegación */}
+		<nav class="hidden md:block">
+			<ul class="main flex gap-4 rounded">
+				{
+					navLinks.map((link) => (
+						<li>
+							<a href={link.href} class="text-sm">
+								{link.text}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+	</div>
+
+	<div class="w-full justify-between md:flex md:items-center">
+		{/* Texto Legal */}
+		<p class="legal-text">
+			© 2024 NutriBienestar S.A. de C.V. | Todos los derechos reservados.
+		</p>
+
+		{/* Redes Sociales */}
+		<nav
+			aria-label="Redes sociales"
+			class="flex items-center justify-center gap-4"
+		>
+			<a
+				href="https://facebook.com"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Visita nuestro Facebook"
+			>
+				<img
+					src="/icons/Facebook_Logo_Primary.svg"
+					class="h-8 w-8"
+					alt="Facebook"
+				/>
+			</a>
+			<a
+				href="https://instagram.com"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Visita nuestro Instagram"
+			>
+				<img
+					src="/icons/Instagram_Glyph_Gradient.svg"
+					class="h-6 w-6"
+					alt="Instagram"
+				/>
+			</a>
+		</nav>
+	</div>
+
+	{/* Separador */}
+	<hr class="-my-2 h-1 w-full bg-neutral-500" />
+
+	{/* Autoría */}
+	<div class="flex items-baseline gap-1 text-neutral-400">
+		<p>Hecho por</p>
+		<a
+			href="#"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="text-2xl font-bold text-neutral-800"
+			aria-label="Visitar el sitio web de craftedbycamo"
+		>
+			15fortystudio
+		</a>
+	</div>
+</footer>

@@ -1,0 +1,333 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+import Banner from '../components/Banner.astro';
+import { Image } from 'astro:assets';
+
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgServicios from '../assets/images/bg/bg-servicios.webp';
+import serviciosConsulta01 from '../assets/images/services/servicios-consulta.webp';
+import serviciosConsulta02 from '../assets/images/services/servicios-consulta02.webp';
+import serviciosPlanes01 from '../assets/images/services/servicios-planes.webp';
+import serviciosPlanes02 from '../assets/images/services/servicios-planes02.webp';
+import serviciosTalleres01 from '../assets/images/services/servicios-talleres.webp';
+import serviciosTalleres02 from '../assets/images/services/servicios-talleres02.webp';
+---
+
+<BaseLayout title="Servicios">
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<Banner
+		bannerSrc={bgServicios}
+		bannerAlt="Persona con un tenedor sobre un plato, anticipando el momento de saborear su comida"
+		bannerPage="Servicios"
+		bannerTitle="Servicios"
+	/>
+
+	<!-- =========================== -->
+	<!--           Content           -->
+	<!-- =========================== -->
+	<section
+		aria-labelledby="content-heading"
+		class="flex flex-col gap-8 xl:gap-16"
+	>
+		<h2 id="content-heading" class="sr-only">
+			Descripción de nuestros servicios
+		</h2>
+		<h2 class="heading textShadow text-brandPrimary text-center">
+			Cuidamos tu sonrisa
+		</h2>
+
+		<!-- =============================== -->
+		<!--           Servicio 01           -->
+		<!-- =============================== -->
+		<article
+			aria-labelledby="servicio-consultas"
+			class="flex flex-col items-center gap-[3rem]"
+		>
+			<h3 id="servicio-consultas" class="sr-only">Consultas Personalizadas</h3>
+			<div
+				class="flex flex-col items-center gap-[1rem] md:flex-row xl:gap-[4rem]"
+			>
+				<div
+					class="h-[250px] w-full shadow-lg md:h-[450px] md:w-1/2 lg:h-[600px]"
+				>
+					<Image
+						src={serviciosConsulta01}
+						alt="Una doctora conversa con una paciente en un consultorio médico, mostrando atención y profesionalismo."
+						width={800}
+						height={600}
+						class="h-full w-full rounded object-cover"
+						aria-hidden="true"
+						format="webp"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+				<div
+					class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2 lg:p-[4rem] xl:gap-[2rem]"
+				>
+					<h2 class="title text-brandPrimary textShadow">
+						Consultas Personalizadas
+					</h2>
+					<p class="main">
+						Te ayudamos a alcanzar tus metas de salud con planes diseñados a tu
+						medida. Analizamos tus hábitos y objetivos para crear una estrategia
+						efectiva, ya sea para mejorar tu salud, bajar de peso o manejar una
+						condición médica.
+					</p>
+					<h2 class="sub-title border-y-2 border-neutral-300">Beneficios:</h2>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<li>Más energía y mejor rendimiento.</li>
+						<li>Decisiones alimenticias saludables sin complicaciones.</li>
+						<li>Balance entre tu vida personal y tus metas de salud.</li>
+						<li>Apoyo constante para ajustar tu plan según tu progreso.</li>
+					</ul>
+				</div>
+			</div>
+			<div
+				class="flex w-full flex-col items-center gap-[1rem] md:flex-row-reverse xl:gap-[4rem]"
+			>
+				<div
+					class="h-[250px] w-full shadow-lg md:h-[450px] md:w-1/2 lg:h-[600px]"
+				>
+					<Image
+						src={serviciosConsulta02}
+						alt="Mesa con una selección de platos y bebidas dispuestos de forma ordenada y apetitosa."
+						width={800}
+						height={600}
+						class="h-full w-full rounded object-cover"
+						aria-hidden="true"
+						format="webp"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+				<div
+					class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2 lg:p-[4rem] xl:gap-[2rem]"
+				>
+					<h2 class="sub-title border-y-2 border-neutral-300">
+						Preguntas frecuentes:
+					</h2>
+					<ul class="main flex flex-col gap-2">
+						<dt class="font-bold">Duración de las consultas:</dt>
+						<dd>Inicial de 60 min, seguimiento de 30 min</dd>
+						<dt class="font-bold">Modalidad:</dt>
+						<dd>Presencial o virtual, ¡tú eliges!</dd>
+					</ul>
+					<h2 class="sub-title border-y-2 border-neutral-300">
+						¿Cómo funciona?
+					</h2>
+					<ul class="main flex flex-col gap-2">
+						<dt class="font-bold">Consulta inicial (60 min):</dt>
+						<dd>Evaluamos tu salud y metas</dd>
+						<dt class="font-bold">Plan personalizado:</dt>
+						<dd>Diseñado según tus necesidades</dd>
+						<dt class="font-bold">Seguimiento:</dt>
+						<dd>Consultas regulares de 30 min para ajustes</dd>
+					</ul>
+				</div>
+			</div>
+		</article>
+
+		<!-- =============================== -->
+		<!--           Servicio 02           -->
+		<!-- =============================== -->
+		<article
+			aria-labelledby="servicio-planes"
+			class="flex flex-col items-center gap-[3rem]"
+		>
+			<h3 id="servicio-planes" class="sr-only">Planes de Alimentación</h3>
+			<div
+				class="flex flex-col items-center gap-[1rem] md:flex-row xl:gap-[4rem]"
+			>
+				<div
+					class="h-[250px] w-full shadow-lg md:h-[450px] md:w-1/2 lg:h-[600px]"
+				>
+					<Image
+						src={serviciosPlanes01}
+						alt="Comida saludable en un plato, simbolizando la dieta limpia y el objetivo de perder peso de manera efectiva."
+						width={800}
+						height={600}
+						class="h-full w-full rounded object-cover"
+						aria-hidden="true"
+						format="webp"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+				<div
+					class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2 lg:p-[4rem] xl:gap-[2rem]"
+				>
+					<h2 class="title text-brandPrimary textShadow">
+						Planes de Alimentación
+					</h2>
+					<p class="main">
+						Diseñamos planes equilibrados que se adaptan a tu rutina y
+						preferencias. Sin dietas extremas, nos enfocamos en alimentos que
+						disfrutes para ayudarte a alcanzar tus metas:
+					</p>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<li>Perder peso</li>
+						<li>Aumentar energía</li>
+						<li>Mejorar tu rendimiento deportivo</li>
+					</ul>
+					<h2 class="sub-title border-y-2 border-neutral-300">Beneficios:</h2>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<li>Comidas balanceadas que encajan con tu estilo de vida</li>
+						<li>Recetas rápidas y fáciles sin complicar tu nutrición</li>
+						<li>Mantén un peso saludable sin restricciones extremas</li>
+						<li>
+							Olvídate del estrés de decidir qué comer con un plan estructurado
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div
+				class="flex w-full flex-col items-center gap-[1rem] md:flex-row-reverse xl:gap-[4rem]"
+			>
+				<div
+					class="h-[250px] w-full shadow-lg md:h-[450px] md:w-1/2 lg:h-[600px]"
+				>
+					<Image
+						src={serviciosPlanes02}
+						alt="Zumo verde fresco con frutas y verduras saludables"
+						width={800}
+						height={600}
+						class="h-full w-full rounded object-cover"
+						aria-hidden="true"
+						format="webp"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+				<div
+					class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2 lg:p-[4rem] xl:gap-[2rem]"
+				>
+					<h2 class="sub-title border-y-2 border-neutral-300">
+						Preguntas frecuentes:
+					</h2>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<dt class="font-bold">¿Y si no me gustan ciertos alimentos?</dt>
+						<dd>Ajustamos el plan a tus gustos y preferencias</dd>
+						<dt class="font-bold">¿Cuánto dura el plan?</dt>
+						<dd>
+							Diseñamos planes mensuales con ajustes semanales o quincenales
+							según tu progreso
+						</dd>
+					</ul>
+					<h2 class="sub-title border-y-2 border-neutral-300">¿Qué incluye?</h2>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<li>Plan semanal con recetas fáciles de seguir</li>
+						<li>Lista de compras personalizada</li>
+						<li>Consejos para optimizar tu tiempo en la cocina</li>
+					</ul>
+				</div>
+			</div>
+		</article>
+
+		<!-- ================================ -->
+		<!--           Servicio 03            -->
+		<!-- ================================ -->
+		<article
+			aria-labelledby="servicio-talleres"
+			class="flex flex-col items-center gap-[3rem]"
+		>
+			<h3 id="servicio-talleres" class="sr-only">Talleres de Nutrición</h3>
+			<div
+				class="flex flex-col items-center gap-[1rem] md:flex-row xl:gap-[4rem]"
+			>
+				<div
+					class="h-[250px] w-full shadow-lg md:h-[450px] md:w-1/2 lg:h-[600px]"
+				>
+					<Image
+						src={serviciosTalleres01}
+						alt="Un grupo de personas sentadas alrededor de una mesa con un gráfico de nutrición visible."
+						width={800}
+						height={600}
+						class="h-full w-full rounded object-cover"
+						aria-hidden="true"
+						format="webp"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+				<div
+					class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2 lg:p-[4rem] xl:gap-[2rem]"
+				>
+					<h2 class="title text-brandPrimary textShadow">
+						Talleres de Nutrición
+					</h2>
+					<p class="main">
+						Aprende a mejorar tu alimentación de forma sencilla y práctica con
+						nuestros talleres. Abordamos temas como “Hábitos alimenticios
+						saludables”, “Nutrición para el rendimiento deportivo” y “Comer
+						saludable en el día a día”. Ideales para empresas, escuelas o grupos
+						que buscan adoptar hábitos saludables.
+					</p>
+					<h2 class="sub-title border-y-2 border-neutral-300">Beneficios:</h2>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<li>Más energía y mejor rendimiento</li>
+						<li>Decisiones alimenticias saludables sin complicaciones</li>
+						<li>Balance entre tu vida personal y tus metas de salud</li>
+						<li>Apoyo constante para ajustar tu plan según tu progreso</li>
+					</ul>
+				</div>
+			</div>
+			<div
+				class="flex w-full flex-col items-center gap-[1rem] md:flex-row-reverse xl:gap-[4rem]"
+			>
+				<div
+					class="h-[250px] w-full shadow-lg md:h-[450px] md:w-1/2 lg:h-[600px]"
+				>
+					<Image
+						src={serviciosTalleres02}
+						alt="Niños aprendiendo a cocinar en un taller infantil."
+						width={800}
+						height={600}
+						class="h-full w-full rounded object-cover"
+						aria-hidden="true"
+						format="webp"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+				<div
+					class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2 lg:p-[4rem] xl:gap-[2rem]"
+				>
+					<h2 class="sub-title border-y-2 border-neutral-300">
+						Preguntas frecuentes:
+					</h2>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<dt class="font-bold">Duración:</dt>
+						<dd>Entre 60 y 90 minutos, según el tema</dd>
+						<dt class="font-bold">Modalidad:</dt>
+						<dd>Talleres presenciales y virtuales disponibles</dd>
+						<dt class="font-bold">Talleres personalizados:</dt>
+						<dd>
+							Adaptamos el contenido a las necesidades de tu grupo o empresa
+						</dd>
+					</ul>
+					<h2 class="sub-title border-y-2 border-neutral-300">Puntos clave</h2>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<li>
+							Técnicas simples para mejorar tu alimentación sin complicaciones
+						</li>
+						<li>Pequeños cambios con gran impacto en tu salud a largo plazo</li>
+						<li>Consejos prácticos para aplicar de inmediato</li>
+					</ul>
+				</div>
+			</div>
+		</article>
+	</section>
+	<!-- ================================== -->
+	<!--           Call To Action           -->
+	<!-- ================================== -->
+	<section id="cta-section">
+		<h2 id="cta-heading" class="sr-only">Llamado a la acción para contactar</h2>
+		<CallToAction />
+	</section>
+</BaseLayout>

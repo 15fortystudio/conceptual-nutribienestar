@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Banner from '../components/Banner.astro';
+
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgContacto from '../assets/images/bg/bg-contacto.webp';
+import contactMain from '../assets/images/contact-main.webp';
+import Contact from '../assets/images/contacto.webp';
+import { Image } from 'astro:assets';
+---
+
+<BaseLayout title="Contacto">
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<Banner
+		bannerSrc={bgContacto}
+		bannerAlt="Mujer en traje formal saboreando una ensalada, combinando trabajo y alimentación saludable."
+		bannerPage="Contacto"
+		bannerTitle="Contacto"
+	/>
+
+	<!-- =========================== -->
+	<!--           Content           -->
+	<!-- =========================== -->
+	<section
+		aria-labelledby="content-heading"
+		class="flex flex-col gap-8 xl:gap-16"
+	>
+		<h2 id="content-heading" class="sr-only">
+			Información sobre contacto y disponibilidad
+		</h2>
+		<h2 class="heading textShadow text-brandPrimary text-center">
+			Hablemos de tu sonrisa
+		</h2>
+
+		<div class="flex flex-col items-center gap-8 md:flex-row">
+			<figure
+				class="h-[300px] w-full shadow-lg md:h-[400px] md:w-1/2 xl:h-[600px]"
+			>
+				<Image
+					src={contactMain}
+					alt="Doctora sonriendo mientras habla por teléfono rodeada de frutas y verduras saludables."
+					width={800}
+					height={600}
+					class="h-full w-full rounded object-cover"
+					format="webp"
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+			<div class="flex w-full flex-col gap-4 text-center md:w-1/2 xl:px-10">
+				<h3 class="title text-brandPrimary textShadow">
+					¡Me encantaría saber de ti!
+				</h3>
+				<p class="sub-title">Puedes contactarme a través:</p>
+				<dl class="main flex flex-col gap-2">
+					<dt class="font-bold">Mi correo electrónico:</dt>
+					<dd>info@nutribienestar.com</dd>
+					<dt class="font-bold">Número de teléfono:</dt>
+					<dd>123-456-7890</dd>
+				</dl>
+				<p class="main">
+					Estoy aquí para ayudarte en tu camino hacia una vida más saludable.
+				</p>
+			</div>
+		</div>
+
+		<div class="flex flex-col items-center gap-8 md:flex-row-reverse">
+			<figure
+				class="h-[300px] w-full shadow-lg md:h-[400px] md:w-1/2 xl:h-[600px]"
+			>
+				<Image
+					src={Contact}
+					alt="Laptop sobre un escritorio con una lámpara y un cuaderno, creando un ambiente de trabajo organizado y acogedor."
+					width={800}
+					height={600}
+					class="h-full w-full rounded object-cover"
+					format="webp"
+					loading="lazy"
+				/>
+			</figure>
+			<div class="flex w-full flex-col gap-4 text-center md:w-1/2 xl:px-10">
+				<h3 class="title text-brandPrimary textShadow">
+					¿Tienes dudas o preguntas?
+				</h3>
+				<p class="main">
+					Si deseas información sobre mis servicios, talleres o simplemente
+					charlar sobre cómo mejorar tu alimentación, no dudes en escribirme.
+				</p>
+				<p class="main">
+					Tu bienestar es mi prioridad. Juntos podemos crear un plan
+					personalizado que se adapte a tus necesidades y objetivos. ¡Espero
+					saber de ti pronto!
+				</p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,76 @@
+---
+interface Props {
+	posts: Array<any>;
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="relative flex max-w-full overflow-hidden">
+	<button
+		class="absolute bottom-[50%] left-[10px] z-20 cursor-pointer border-0 text-[60px] text-neutral-600 opacity-50 hover:opacity-100 focus:opacity-100 xl:bottom-30"
+		data-action="prev"
+		aria-label="Ir al post anterior"
+		disabled
+	>
+		‹
+	</button>
+
+	<div
+		class="ml-[calc(50%-200px)] flex h-[220px] items-center gap-95 transition-transform duration-300 ease-in-out md:ml-[calc(50%-250px)] md:h-[300px] xl:ml-[calc(50%-450px)] xl:h-[300px]"
+		id="blogCarouselWrapper"
+	>
+		{
+			posts.map((post) => (
+				<div
+					class="blog-carousel__item flex shrink-0 flex-col gap-8 text-center"
+					key={post.id}
+				>
+					<div class="flex w-[400px] flex-col md:w-[500px] xl:w-[900px]">
+						<a href={`/blog/${post.id}/`} class="flex flex-col gap-4">
+							<h3 class="title">{post.data.title}</h3>
+							<p class="main">{post.data.summary}</p>
+						</a>
+					</div>
+				</div>
+			))
+		}
+	</div>
+
+	<button
+		class="absolute right-[10px] bottom-[50%] z-20 cursor-pointer border-0 text-[60px] text-neutral-600 opacity-50 hover:opacity-100 focus:opacity-100 xl:bottom-30"
+		data-action="next"
+		aria-label="Ir al siguiente post"
+	>
+		›
+	</button>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		let currentIndex = 0;
+		const wrapper = document.getElementById('blogCarouselWrapper');
+		const items = Array.from(wrapper.children);
+		const totalItems = items.length;
+		const gap = 380;
+		const buttons = document.querySelectorAll('[data-action]');
+
+		const updateCarousel = () => {
+			const itemWidth = items[0].offsetWidth + gap;
+			wrapper.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+		};
+
+		buttons.forEach((button) => {
+			button.addEventListener('click', () => {
+				if (button.dataset.action === 'next') {
+					currentIndex = (currentIndex + 1) % totalItems; // Reinicia al primero si es el último
+				} else {
+					currentIndex = (currentIndex - 1 + totalItems) % totalItems; // Regresa al último si es el primero
+				}
+				updateCarousel();
+			});
+		});
+
+		updateCarousel();
+	});
+</script>
