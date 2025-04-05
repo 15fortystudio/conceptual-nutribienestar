@@ -1,25 +1,11 @@
 ---
-const { announcementLink, announcementMessage } = Astro.props;
+const { announcementMessage } = Astro.props;
 ---
 
-{
-	announcementMessage && (
-		<div id="announcement-bar">
-			{announcementLink ? (
-				<a
-					class="bg-bars flex items-center justify-center rounded px-4 py-2 text-center"
-					href={announcementLink}
-					rel="noopener noreferrer"
-				>
-					<p class="font-main text-base text-neutral-500">
-						{announcementMessage}
-					</p>
-				</a>
-			) : (
-				<p class="bg-bars font-main flex items-center justify-center rounded px-4 py-2 text-center text-base text-neutral-500">
-					{announcementMessage}
-				</p>
-			)}
-		</div>
-	)
-}
+<div
+	class="bg-bars flex items-center justify-center rounded px-4 py-2 text-center"
+>
+	<p class="font-main text-base text-neutral-500">
+		{announcementMessage}
+	</p>
+</div>
